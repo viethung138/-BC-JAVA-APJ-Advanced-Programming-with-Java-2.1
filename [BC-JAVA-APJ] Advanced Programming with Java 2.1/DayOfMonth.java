@@ -6,31 +6,12 @@ public class DayOfMonth {
             System.out.print("Which month that you want to count days? ");
             int month = sc.nextInt();
 
-            String dayInMonth;
-            switch (month) {
-                case 2: 
-                    dayInMonth = "28 or 29";
-                    break;
-                case 1:
-                case 3:
-                case 5:
-                case 7: 
-                case 8:
-                case 10:
-                case 12:
-                    dayInMonth = "31";
-                    break;
-                
-                case 4:
-                case 6:
-                case 9:
-                case 11:
-                    dayInMonth = "30";
-                    break;
-                default:
-                    dayInMonth = "";
-                    break;
-            }
+            String dayInMonth = switch (month) {
+                case 2 -> "28 or 29";
+                case 1, 3, 5, 7, 8, 10, 12 -> "31";
+                case 4, 6, 9, 11 -> "30";
+                default -> "";
+            };
             if (!dayInMonth.equals("")) {
                 System.out.print("The month " + month + " has " + dayInMonth + " days!");
             } else {

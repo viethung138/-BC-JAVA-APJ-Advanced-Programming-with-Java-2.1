@@ -10,14 +10,14 @@ public class GreatestCommonFactor {
             b = Math.abs(b);
             if (a == 0 || b == 0) {
                 System.out.println("No greatest common factor");
-            } else {
-                while (b != 0) {
-                    int temp = b;
-                    b = a % b;
-                    a = temp;
-                }
-                System.out.println("Greatest common factor: " + a);
+                return;
             }
+            while (b != 0) {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+            System.out.println("Greatest common factor: " + a);
         }
     }
 }

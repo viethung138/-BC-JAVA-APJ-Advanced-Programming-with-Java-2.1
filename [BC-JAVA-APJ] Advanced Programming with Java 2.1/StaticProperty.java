@@ -1,8 +1,7 @@
 public class StaticProperty {
     public static void main(String[] args) {
         Car car1 = new Car("Mazda 3", "Skyactive 3");
-        System.out.println(Car.getNumberOfCars());
-        Car car2 = new Car("Mazda 6", "Skyactive 6");
+        System.out.println(car1.getName());
         System.out.println(Car.getNumberOfCars());
     }
 }
@@ -41,6 +40,4 @@ class Car {
     public static void setNumberOfCars(int numberOfCars) {
         Car.numberOfCars = numberOfCars;
     }
-
-    
 }

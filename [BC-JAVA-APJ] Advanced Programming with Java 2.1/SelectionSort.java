@@ -1,6 +1,11 @@
 public class SelectionSort {
     public static void main(String[] args) {
         selectionSort(list);
+        for (int i = 0; i < list.length / 2; i++){
+            double temp = list[i];
+            list[i] = list[list.length - i - 1];
+            list[list.length - i - 1] = temp;
+        }
         for (int i = 0; i < list.length; i++) {
             System.out.print(list[i] + " ");
         }

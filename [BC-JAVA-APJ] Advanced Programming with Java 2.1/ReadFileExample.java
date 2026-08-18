@@ -12,6 +12,7 @@ public class ReadFileExample {
 
         ReadFileExample readfileEx = new ReadFileExample();
         readfileEx.readFileText(path);
+        sc.close();
     }
 
     public void readFileText(String filePath) {
@@ -21,7 +22,7 @@ public class ReadFileExample {
                 throw new FileNotFoundException();
             }
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String line = "";
+            String line = " ";
             int sum = 0;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);

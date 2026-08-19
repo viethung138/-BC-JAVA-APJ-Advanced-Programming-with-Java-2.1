@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class DisplayRecTri {
 
     public static void main(String[] args) {
-        int choice  = -1;
-        try(Scanner sc = new Scanner(System.in)) {
-            while(choice != 0 && choice != 4) {
+        int choice = -1;
+        try (Scanner sc = new Scanner(System.in)) {
+            while (choice != 0 && choice != 4) {
                 System.out.println("Menu:");
                 System.out.println("1. Print the rectangle");
                 System.out.println("2. Print the square triangle");
@@ -15,7 +15,7 @@ public class DisplayRecTri {
                 choice = sc.nextInt();
 
                 switch (choice) {
-                    case 1:
+                    case 1 -> {
                         System.out.println("Print the rectangle:");
                         for (int i = 1; i <= 3; i++) {
                             for (int j = 1; j <= 7; j++) {
@@ -23,8 +23,8 @@ public class DisplayRecTri {
                             }
                             System.out.println();
                         }
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Print the square triangle:");
                         System.out.println("a. Bottom-left:");
                         for (int i = 1; i <= 5; i++) {
@@ -63,12 +63,9 @@ public class DisplayRecTri {
                             }
                             System.out.println();
                         }
-                        break;
-                    case 0:
-                        System.out.println("Exiting program...");
-                        break;
-                    default:
-                        System.out.println("No choice");
+                    }
+                    case 0 -> System.out.println("Exiting program...");
+                    default -> System.out.println("No choice");
                 }
             }
         }

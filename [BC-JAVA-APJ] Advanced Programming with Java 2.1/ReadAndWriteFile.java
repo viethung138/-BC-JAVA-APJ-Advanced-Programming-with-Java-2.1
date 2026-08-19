@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,43 +19,46 @@ public class ReadAndWriteFile {
 
         int maxValue = findMax(numbers);
         readAndWriteFile.writeFile("result.txt", maxValue);
+        System.out.println("Hoàn thành! Đã ghi giá trị lớn nhất (" + maxValue + ") vào file result.txt.");
     }
 
     public List<Integer> readFile(String filePath) {
         List<Integer> numbers = new ArrayList<>();
+        File file = new File(filePath);
+        
+        if (!file.exists()) {
+            System.err.println("Lỗi: File '" + filePath + "' không tồn tại.");
+            return numbers;
+        }
+        
         try {
-            File file = new File(filePath);
-            
-            if (!file.exists()) {
-                throw new FileNotFoundException();
-            }
-
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String line = "";
+            String line;
             while ((line = br.readLine()) != null) {
-                numbers.add(Integer.parseInt(line));
+                if(!line.trim().isEmpty()) {
+                    numbers.add(Integer.parseInt(line.trim()));
+                }
             }
-            br.close();
-        } catch (Exception e) {
-            System.err.println("File không tồn tại hoặc nội dung không có lỗi");
+        } catch (NumberFormatException e) {
+            System.err.println("Lỗi: Nội dung file chứa dữ liệu không phải là số nguyên.");
+        } catch (IOException e) {
+            System.err.println("Lỗi trong quá trình đọc file " + e.getMessage());
         }
         return numbers;
     }
 
     public void writeFile(String filePath, int max) {
-        try {
-            FileWriter writer = new FileWriter(filePath, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, true))) {
             bufferedWriter.write("Giá trị lớn nhất là: " + max);
-            bufferedWriter.close();
+            bufferedWriter.newLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Lỗi khi ghi file " + e.getMessage());
         }
     }
 
     public static int findMax(List<Integer> numbers) {
         int max = numbers.get(0);
-        for (int i = 0; i < numbers.size(); i++) {
+        for (int i = 1; i < numbers.size(); i++) {
             if (max < numbers.get(i)) {
                 max = numbers.get(i);
             }

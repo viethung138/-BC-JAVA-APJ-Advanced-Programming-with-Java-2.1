@@ -1,23 +1,28 @@
 import java.util.Scanner;
 
 public class DisplayPrimeNumber {
+    public static boolean isPrime(int n) {
+        if (n < 2) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập vào số lượng số nguyên tố cần in ra: ");
+        System.out.print("Nhập số lượng số nguyên tố cần in ra: ");
         int numbers = sc.nextInt();
         int count = 0;
         int N = 2;
-        System.out.println(numbers + " Số nguyên tố đầu tiên là: ");
+
         while (count < numbers) {
-            boolean isPrime = true;
-            for (int i = 2; i <= Math.sqrt(N); i++) {
-                if (N % i == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-            if (isPrime) {
-                System.out.print(N + " ");
+            if (isPrime(N)) {
+                System.out.println(N + " ");
                 count++;
             }
             N++;

@@ -38,6 +38,7 @@ public class ReadAndWriteFile {
                 if(!line.trim().isEmpty()) {
                     numbers.add(Integer.parseInt(line.trim()));
                 }
+            br.close();
             }
         } catch (NumberFormatException e) {
             System.err.println("Lỗi: Nội dung file chứa dữ liệu không phải là số nguyên.");

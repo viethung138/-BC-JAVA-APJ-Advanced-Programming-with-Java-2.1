@@ -20,7 +20,6 @@ public class Test {
         Student s1 = new Student();
         s1.setName("abc");
         s1.setClasses("a1");
-        
         System.out.println("Cập nhật thông tin thành công!");
     }
 }

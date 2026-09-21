@@ -20,7 +20,7 @@ class Circle extends Shape{
         return radius;
     }
 
-    public void setRadious(double radius) {
+    public void setRadius(double radius) {
         this.radius = radius;
     }
 
